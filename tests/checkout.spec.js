@@ -3,6 +3,9 @@ const LoginPage = require('../pages/loginPage');
 const ProductPage = require('../pages/productPage');
 const CheckoutPage = require('../pages/checkoutPage');
 const config = require('../utils/config');
+const checkoutData = require('../test-data/checkoutData.json');
+
+
 
 test('User can complete checkout successfully', async ({page})=>{
     const loginPage = new LoginPage(page);
@@ -18,7 +21,11 @@ test('User can complete checkout successfully', async ({page})=>{
     await productPage.goToCart();
 
     await checkoutPage.clickCheckoutButton();
-    await checkoutPage.fillCheckoutInformation('John', 'Doe', '12345');
+    await checkoutPage.fillCheckoutInformation(
+        checkoutData.validUser.firstName,
+        checkoutData.validUser.lastName,
+        checkoutData.validUser.postalCode
+    );
     await checkoutPage.finishOrder();
 
     await expect(checkoutPage.successMessage).toHaveText('Thank you for your order!');
