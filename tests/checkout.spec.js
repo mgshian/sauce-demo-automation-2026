@@ -5,17 +5,20 @@ const CheckoutPage = require('../pages/checkoutPage');
 const config = require('../utils/config');
 const checkoutData = require('../test-data/checkoutData.json');
 
+let productPage;
+let checkoutPage;
+
+test.beforeEach(async ({page})=>{
+    const loginPage = new LoginPage(page);
+    productPage = new ProductPage(page);
+    checkoutPage = new CheckoutPage(page);  
+
+    await loginPage.goto(config.baseURL);
+    await loginPage.login(config.username, config.password);    
+})
 
 
 test('User can complete checkout successfully', async ({page})=>{
-    const loginPage = new LoginPage(page);
-    const productPage = new ProductPage(page);
-    const checkoutPage = new CheckoutPage(page);
-
-     await loginPage.goto(config.baseURL);
-     await loginPage.login(config.username, config.password);
-
-    //await page.pause();
 
     await productPage.addItemToCart();
     await productPage.goToCart();

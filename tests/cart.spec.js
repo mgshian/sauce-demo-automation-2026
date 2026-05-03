@@ -3,13 +3,18 @@ const LoginPage = require('../pages/loginPage');
 const ProductPage = require('../pages/productPage');
 const config = require('../utils/config');
 
-test('User can add and remove item from cart', async ({page})=>{
+let productPage;
+
+test.beforeEach(async ({ page }) => {
     const loginPage = new LoginPage(page);
-    const productPage = new ProductPage(page);
- 
+    productPage = new ProductPage(page);
+
     await loginPage.goto(config.baseURL);
     await loginPage.login(config.username, config.password);
+});
 
+
+test('User can add and remove item from cart', async ({page})=>{
     await productPage.addItemToCart();
     await productPage.goToCart();
 
