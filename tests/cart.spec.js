@@ -1,6 +1,6 @@
 const {test, expect} = require('@playwright/test');
-const LoginPage = require('../pages/LoginPage');
-const ProductPage = require('../pages/ProductPage');
+const LoginPage = require('../pages/loginPage');
+const ProductPage = require('../pages/productPage');
 const config = require('../utils/config');
 
 test('User can add and remove item from cart', async ({page})=>{
