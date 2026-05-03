@@ -12,6 +12,7 @@ It automates core user flows of the SauceDemo application, including login, cart
 * Data-driven testing using JSON
 * Environment variable support with `.env`
 * Modular and scalable test design
+* Uses beforeEach hooks for reusable login steps in tests
 * Covers key user workflows:
 
   * Login
@@ -107,12 +108,12 @@ npx playwright show-report
 
 * User can login with valid credentials
 
-### Cart Tests
+### Cart Tests (login before each test)
 
 * Add item to cart
 * Remove item from cart
 
-###  Checkout Tests
+### Checkout Tests (login before each test)
 
 * Successful checkout with valid data
 * Error handling when required fields are missing
@@ -130,7 +131,7 @@ npx playwright show-report
 ##  Future Improvements
 
 * Add negative login test cases
-* Implement `beforeEach` hooks for reusable steps
+* Expand use of beforeEach for other common steps
 * Integrate CI/CD (GitHub Actions)
 * Add screenshots and videos on failure
 * Expand test coverage (multiple items, edge cases)
