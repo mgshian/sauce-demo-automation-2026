@@ -28,7 +28,7 @@ export default defineConfig({
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
     // baseURL: 'http://localhost:3000',
-    headless: false,   // 👈 this makes browser visible
+    headless: !!process.env.CI,   // headless in CI, headed locally for debugging
     slowMo: 500,       // optional: slows down actions so you can see them
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
