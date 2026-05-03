@@ -1,10 +1,9 @@
 class LoginPage {
     constructor (page) {
         this.page = page;
-        this.usernameInput = '#user-name';
-        this.passwordInput = '#password';
-        this.loginButton = '#login-button';
-
+        this.usernameInput = page.locator('#user-name');
+        this.passwordInput = page.locator('#password');
+        this.loginButton = page.locator('#login-button');
     }
 
 
@@ -14,11 +13,11 @@ async goto(){
 }
 
 async login(username, password) {
-    await this.page.fill(this.usernameInput, username);
-    await this.page.fill(this.passwordInput, password);
+    await this.usernameInput.fill(username);
+    await this.passwordInput.fill(password);
     await Promise.all([
         this.page.waitForURL('**/inventory.html'),
-        this.page.click(this.loginButton),
+        this.loginButton.click(),
     ]);
 }
 

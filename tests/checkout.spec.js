@@ -5,6 +5,7 @@ const CheckoutPage = require('../pages/checkoutPage');
 const config = require('../utils/config');
 const checkoutData = require('../test-data/checkoutData.json');
 
+
 let productPage;
 let checkoutPage;
 
